@@ -4,7 +4,9 @@ export class WatchEmitter<T extends { [event: string]: (...parameters: any) => a
 	implements AwaitingEventEmitter<T>
 {
 	private currentHandlers: {
+
 		[K in keyof T]?: AwaitedEventListener<T, K>[];
+
 	} = Object.create(null);
 	private persistentHandlers: {
 		[K in keyof T]?: AwaitedEventListener<T, K>[];
